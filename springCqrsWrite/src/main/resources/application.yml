@@ -1,0 +1,17 @@
+server:
+  port: 7001
+
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver  # MariaDB 전용 드라이버
+    url: jdbc:mariadb://127.0.0.1:3307/springcqrs  # URL을 mariadb로 변경
+    username: root
+    password: ys1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+        dialect: org.hibernate.dialect.MariaDBDialect  # MariaDB 전용 dialect

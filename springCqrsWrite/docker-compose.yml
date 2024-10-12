@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb-container
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}   # 루트 사용자 비밀번호
+      MYSQL_DATABASE: springcqrs          # 생성할 데이터베이스
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3307:3306"  # 외부 포트 : 내부 포트
+    volumes:
+      - mariadb_data:/var/lib/mysql결
+
+volumes:
+  mariadb_data:   # 데이터 영구 저장을 위한 볼륨
