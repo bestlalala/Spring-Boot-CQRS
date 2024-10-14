@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver  # MariaDB 전용 드라이버
-    url: jdbc:mariadb://127.0.0.1:3307/springcqrs  # URL을 mariadb로 변경
+    url: jdbc:mariadb://localhost:3307/springcqrs  # 컨테이너 내에서 mariaDB 서비스 이름 사용
     username: root
     password: ys1234
   jpa:
