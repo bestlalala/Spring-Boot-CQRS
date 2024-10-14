@@ -11,6 +11,7 @@ import java.util.Date;
 //django 에서는 views.py 파일의 역할
 public class BookService {
     private final BookRepository bookRepository;
+    private final KafkaProducer kafkaProducer;
 
     //데이터 저장
     //파라미터를 받아서 엔티티를 생성하고 repository를 이용해서 삽입
@@ -31,11 +32,14 @@ public class BookService {
                     build();
             //데이터베이스에 데이터 삽입
             bookRepository.save(book);
+            //카프카에 메시지 전송
+            bookDTO.setBid(book.getBid());
+            kafkaProducer.sendMessage(bookDTO);
+
         }
         catch (Exception e){
             System.out.println(e.getMessage());
         }
-
     }
 }
 
